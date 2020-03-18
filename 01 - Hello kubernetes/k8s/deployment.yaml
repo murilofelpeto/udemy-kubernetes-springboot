@@ -47,5 +47,5 @@ spec: #Especificação do serviço
    selector: #Quais pods terão as regras aplicadas de acordo com o label
       environment: development
       app: hello-world-api
-   sessionAffinity: ClientIP #É uma forma de armazenar cookies e replicar entre os pods
+   sessionAffinity: None #É uma forma de armazenar cookies e replicar entre os pods
    type: LoadBalancer

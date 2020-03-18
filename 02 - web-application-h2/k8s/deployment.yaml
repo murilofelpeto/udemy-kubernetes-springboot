@@ -3,7 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app: web-application-h2
-  name: web-application-h2
+    environment: development
+  name: web-application-h2-deploy
   namespace: default
 spec:
   replicas: 2
@@ -11,6 +12,7 @@ spec:
   selector:
     matchLabels:
       app: web-application-h2
+      environment: development
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,9 +22,10 @@ spec:
     metadata:
       labels:
         app: web-application-h2
+        environment: development
     spec:
       containers:
-      - image: murilofelpeto/web-application-h2:0.0.1-SNAPSHOT
+      - image: murilofelpeto/web-application-h2:0.0.1-RELEASE
         imagePullPolicy: IfNotPresent
         name: web-application-h2
       restartPolicy: Always
@@ -31,9 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels: #PODS
+  labels:
     app: web-application-h2
-  name: web-application-h2
+    environment: development
+  name: web-application-h2-service
   namespace: default
 spec:
   ports:
@@ -43,5 +47,6 @@ spec:
     targetPort: 8080
   selector:
     app: web-application-h2
-  sessionAffinity: ClientIP
+    environment: development
+  sessionAffinity: ClientIP # Preservar o cache. Um IP irá sempre bater no mesmo pod.
   type: LoadBalancer
