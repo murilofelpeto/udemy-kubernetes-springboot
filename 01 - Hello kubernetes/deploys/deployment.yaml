@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+   labels:
+      environment: development
+      app: hello-world-api
+   name: hello-world-api-deploy
+   namespace: default #Usado para dividir recursos de um cluster com vários usuários
+spec: #Definição do deploy
+   replicas: 2 #Quantidade de pods
+   minReadySeconds: 45
+   selector: # É para corresponder um POD ao deploy
+      matchLabels: #É um filtro que todos os pods devem atender, pode definir vários labels
+         environment: development
+         app: hello-world-api
+   strategy:
+      rollingUpdate: #Cenario com 200 pods
+         maxSurge: 25% #Quantidade máxima de pods usadas durante uma release 200 + 25%(maxSurge) * 200 = 240 
+         maxUnavailable: 25% #Quantidade de pods que podem  ficar indisponiveis durante a release 25%(maxUnavailable) * 200 = 40
+      type: RollingUpdate
+   template: #Definição do pod
+      metadata:
+         labels: # Nesse caso temos dois labels um de ambiente e outro com o nome do aplicativo
+            environment: development # ambiente de execução
+            app: hello-world-api #label do pod, normalmente usado para separar ambientes
+      spec:
+         containers: #Containers que irão executar dentro do pod
+         -  image: murilofelpeto/kubernetes:0.0.2-RELEASE
+            imagePullPolicy: IfNotPresent
+            name: web-application-mysql #Nome do container
+         restartPolicy: Always
+         terminationGracePeriodSeconds: 30 #Quando o container parar ele tem 30 segundos para limpar
+---
+apiVersion: v1
+kind: Service
+metadata:
+   labels:
+      app: hello-world-api
+   name: hello-world-api-service
+   namespace: default
+spec: #Especificação do serviço
+   ports:
+   -  nodePort: 30702
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+   selector: #Quais pods terão as regras aplicadas de acordo com o label
+      environment: development
+      app: hello-world-api
+   sessionAffinity: ClientIP #É uma forma de armazenar cookies e replicar entre os pods
+   type: LoadBalancer
