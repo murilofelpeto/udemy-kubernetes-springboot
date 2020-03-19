@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: todo-web-application
+  name: todo-web-application
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todo-web-application
+  template:
+    metadata:
+      labels:
+        app: todo-web-application
+    spec:
+      containers:
+      - env:
+        - name: RDS_DB_NAME
+          value: todos
+        - name: RDS_HOSTNAME
+          value: mysql
+        - name: RDS_PASSWORD
+          value: dummytodos
+        - name: RDS_PORT
+          value: "3306"
+        - name: RDS_USERNAME
+          value: todos-user
+        image: murilofelpeto/web-application-mysql:0.0.2-RELEASE
+        imagePullPolicy: ""
+        name: todo-web-application
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+---
+apiVersion: v1
+kind: Service
+metadata:
+   labels:
+      app: todo-web-application
+   name: todo-web-application
+spec:
+   type: LoadBalancer
+   ports:
+   -  name: '8080'
+      port: 8080
+      targetPort: 8080
+   selector:
+      app: todo-web-application

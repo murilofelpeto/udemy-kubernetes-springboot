@@ -7,7 +7,7 @@
 
 	<groupId>br.com.murilo</groupId>
 	<artifactId>web-application-mysql</artifactId>
-	<version>0.0.1-RELEASE</version>
+	<version>0.0.2-RELEASE</version>
 	<packaging>war</packaging>
 	<name>web-application-mysql</name>
 
@@ -130,8 +130,7 @@
 				</executions>
 				<configuration>
 					<!-- todo -->
-					<repository>
-	murilofelpeto/${project.name}</repository>
+					<repository>murilofelpeto/${project.name}</repository>
 					<tag>${project.version}</tag>
 					<skipDockerInfo>true</skipDockerInfo>
 				</configuration>
@@ -155,4 +154,5 @@
 			<url>https://repo.spring.io/milestones</url>
 		</pluginRepository>
 	</pluginRepositories>
+
 </project>
