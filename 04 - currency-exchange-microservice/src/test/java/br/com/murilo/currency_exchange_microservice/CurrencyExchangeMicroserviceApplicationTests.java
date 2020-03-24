@@ -1,4 +1,4 @@
-package br.com.murilo.currencyexchangemicroservice;
+package br.com.murilo.currency_exchange_microservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

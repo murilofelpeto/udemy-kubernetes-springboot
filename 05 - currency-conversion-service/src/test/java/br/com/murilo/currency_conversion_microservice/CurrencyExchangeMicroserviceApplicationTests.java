@@ -1,10 +1,10 @@
-package br.com.murilo.currencyexchangemicroservice;
+package br.com.murilo.currency_conversion_microservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CurrencyExchangeMicroserviceApplicationTests {
+class CurrencyConversionMicroserviceApplicationTests {
 
 	@Test
 	void contextLoads() {
