@@ -22,7 +22,7 @@ spec:
             app: currency-exchange
       spec:
          containers:
-         -  image: murilofelpeto/currency-exchange-microservice:0.0.1-SNAPSHOT #CHANGE
+         -  image: murilofelpeto/currency-exchange-microservice:0.0.2-SNAPSHOT #CHANGE
             imagePullPolicy: IfNotPresent
             name: currency-exchange
             ports:
@@ -67,4 +67,4 @@ spec:
    selector:
       app: currency-exchange
    sessionAffinity: None #CHANGE
-   type: LoadBalancer
+   type: NodePort

@@ -22,7 +22,7 @@ spec:
             app: currency-conversion
       spec:
          containers:
-         -  image: murilofelpeto/currency-conversion-microservice:0.0.1-SNAPSHOT #CHANGE
+         -  image: murilofelpeto/currency-conversion-microservice:0.0.2-SNAPSHOT #CHANGE
             imagePullPolicy: IfNotPresent
             name: currency-conversion
             env:
@@ -48,4 +48,4 @@ spec:
    selector: #CHANGE
       app: currency-conversion
    sessionAffinity: None #CHANGE
-   type: LoadBalancer
+   type: NodePort
