@@ -30,7 +30,7 @@ public class CurrencyExchangeController {
 		return "{healthy:true}";
 	}
 
-	// http://localhost:8000/currency-exchange/from/USD/to/INR
+	// http://localhost:8000/currency-exchange/from/USD/to/BRL
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public ExchangeValue retrieveExchangeValue(@PathVariable String from, @PathVariable String to,
 			@RequestHeader Map<String, String> headers) {
