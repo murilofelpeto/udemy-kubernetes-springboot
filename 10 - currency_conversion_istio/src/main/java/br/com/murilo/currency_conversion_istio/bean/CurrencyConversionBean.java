@@ -1,4 +1,4 @@
-package br.com.murilo.currency_conversion_stackdriver.bean;
+package br.com.murilo.currency_conversion_istio.bean;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package br.com.murilo.currency_conversion_stackdriver.config;
+package br.com.murilo.currency_conversion_istio.config;
 
 import java.util.Arrays;
 import java.util.stream.StreamSupport;

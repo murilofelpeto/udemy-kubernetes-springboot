@@ -1,4 +1,4 @@
-package br.com.murilo.currency_exchange_stackdriver.config;
+package br.com.murilo.currency_exchange_istio.config;
 
 import java.util.Arrays;
 import java.util.stream.StreamSupport;

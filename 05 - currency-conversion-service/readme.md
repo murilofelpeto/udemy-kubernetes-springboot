@@ -7,12 +7,12 @@ Run com.in28minutes.microservices.currencyconversionservice.CurrencyConversionSe
 
 ```json
 {
-id: 10002,
-from: "EUR",
-to: "INR",
-conversionMultiple: 75,
-quantity: 10,
-totalCalculatedAmount: 750
+"id": 10002,
+"from": "EUR",
+"to": "INR",
+"conversionMultiple": 75,
+"quantity": 10,
+"totalCalculatedAmount": 750
 }
 ```
 

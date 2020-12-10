@@ -1,7 +1,8 @@
-package br.com.murilo.currency_exchange_stackdriver.controller;
+package br.com.murilo.currency_exchange_istio.controller;
 
-import java.util.Map;
-
+import br.com.murilo.currency_exchange_istio.model.ExchangeValue;
+import br.com.murilo.currency_exchange_istio.repository.ExchangeValueRepository;
+import br.com.murilo.currency_exchange_istio.service.InstanceInformationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.murilo.currency_exchange_stackdriver.model.ExchangeValue;
-import br.com.murilo.currency_exchange_stackdriver.repository.ExchangeValueRepository;
-import br.com.murilo.currency_exchange_stackdriver.service.InstanceInformationService;
+import java.util.Map;
 
 @RestController
 public class CurrencyExchangeController {
@@ -25,15 +24,10 @@ public class CurrencyExchangeController {
 	@Autowired
 	private InstanceInformationService instanceInformationService;
 
-	@GetMapping("/")
-	public String imHealthy() {
-		return "{healthy:true}";
-	}
-
 	// http://localhost:8000/currency-exchange/from/USD/to/BRL
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public ExchangeValue retrieveExchangeValue(@PathVariable String from, @PathVariable String to,
-			@RequestHeader Map<String, String> headers) {
+											   @RequestHeader Map<String, String> headers) {
 
 		printAllHeaders(headers);
 

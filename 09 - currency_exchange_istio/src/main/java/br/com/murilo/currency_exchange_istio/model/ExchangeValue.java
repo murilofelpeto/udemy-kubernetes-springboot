@@ -1,4 +1,4 @@
-package br.com.murilo.currency_exchange_stackdriver.model;
+package br.com.murilo.currency_exchange_istio.model;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package br.com.murilo.currency_exchange_stackdriver.service;
+package br.com.murilo.currency_exchange_istio.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

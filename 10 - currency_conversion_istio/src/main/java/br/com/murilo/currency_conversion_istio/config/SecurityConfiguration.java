@@ -1,4 +1,4 @@
-package br.com.murilo.currency_conversion_stackdriver.config;
+package br.com.murilo.currency_conversion_istio.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
